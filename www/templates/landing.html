@@ -1,0 +1,45 @@
+<ion-view>
+  <ion-content>
+    <div class="spacer20"></div>
+    <!--<div class="row">-->
+      <!--<button class="col button button-assertive button-block icon ion-home" ng-click="ctrl.go('app.tabs.home')">Incidents</button>-->
+      <!--<button class="col button button-calm button-block icon ion-ios-camera" ng-click="ctrl.go('app.tabs.camera')">Camera</button>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+      <!--<button class="col button button-positive button-block icon ion-chatbubbles" ng-click="ctrl.go('app.tabs.communication')">Comm Board</button>-->
+      <!--<button class="col button button-energized button-block icon ion-ios-people-outline" ng-click="ctrl.go('app.tabs.contacts')">Contacts</button>-->
+    <!--</div>-->
+    <div class="col-md-12">
+      <div class="row landingBoxes">
+        <div class="assertive-bg col" ng-click="ctrl.gotoState('app.tabs.home')">
+          <p>
+            <i class="icon ion-home"></i>
+          </p>
+          <h4>Incidents</h4>
+        </div>
+        <div class="calm-bg col" ng-click="ctrl.gotoState('app.tabs.camera')">
+          <p>
+            <i class="icon ion-ios-camera"></i>
+          </p>
+          <h4>Camera</h4>
+        </div>
+     </div>
+    </div>
+    <div class="col-md-12" ng-click="ctrl.gotoState('app.tabs.camera')">
+      <div class="row landingBoxes">
+        <div class="positive-bg col" ng-click="ctrl.gotoState('app.tabs.communication')">
+        <p>
+          <i class="icon ion-chatbubbles"></i>
+        </p>
+        <h4>Comm Board</h4>
+      </div>
+        <div class="energized-bg col" ng-click="ctrl.gotoState('app.tabs.contacts')">
+        <p>
+          <i class="icon ion-ios-people"></i>
+        </p>
+        <h4>Contacts</h4>
+      </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

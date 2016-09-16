@@ -1,0 +1,56 @@
+<div class="taskDetail" ng-if="task !== null && task.TaskTitle !== null">
+  <!--<ion-content>-->
+    <h1 class="center dark-bg">{{task.TaskTitle}}</h1>
+    <div class="instructions col-md-5" >
+      <blockquote class="">
+        <h4>{{task.TaskDescription}}</h4>
+      </blockquote>
+    </div>
+    <div class="clear"></div>
+  <p>
+    <task-options option-type="link" option-target="{{btn.ButtonLink}}"
+                  option-text="{{btn.ButtonText}}"
+                  ng-repeat="btn in ctrl.taskOptions.LinkButtons"
+                  ng-if="btn.ButtonText && btn.ButtonLink">
+    </task-options>
+  </p>
+  <p>
+    <task-options option-type="email" option-target="{{btn.EmailAddress}}"
+                  option-text="{{btn.ButtonText}}"
+                  ng-repeat="btn in ctrl.taskOptions.EmailButtons"
+                  ng-if="btn.ButtonText && btn.EmailAddress">
+    </task-options>
+  </p>
+  <p>
+    <task-options option-type="phone" option-target="{{btn.PhoneNumber}}"
+                  option-text="{{btn.ButtonText}}"
+                  ng-repeat="btn in ctrl.taskOptions.PhoneButtons"
+                  ng-if="btn.ButtonText && btn.PhoneNumber">
+    </task-options>
+  </p>
+  <div class="" ng-if="task.button.length === 1" ng-include="ctrl.contactTemplate"></div>
+    <div class="contactButtons" ng-if="task.button.length > 1" ng-repeat="button in task.button">
+      <button class="button button-round icon-left" ng-class="[button.class, button.icon]" ng-if="button.type === 'call'">
+        <a href="tel:{{button.number}}" class="text-white">{{button.title}}</a>
+      </button>
+      <button ng-if="type === 'doc'" class="button button-round icon-left" ng-class="[button.class, button.icon]" ng-click="ctrl.processButton(button.link);">{{button.title}}</button>
+    </div>
+    <h4>{{task.steps}}</h4>
+  <!--</ion-content>-->
+  <ion-footer-bar align-title="center">
+    <div class="button-bar">
+      <button class="button icon-top ion-android-arrow-back button-positive uppercase detailButton" ng-click="ctrl.toPrevTask();">
+        <h5 class="text-white">Previous<br />Task</h5>
+      </button>
+      <button class="button icon-top ion-checkmark-circled button-balanced uppercase detailButton" ng-click="ctrl.completed(task);">
+        <h5 class="text-white">Completed</h5>
+      </button>
+      <button class="button icon-top ion-close-circled button-stable uppercase detailButton" ng-click="ctrl.completed(task);">
+        <h5 class="">Not<br />Applicable</h5>
+      </button>
+      <button class="button icon-top ion-android-arrow-forward button-positive uppercase detailButton" ng-click="ctrl.toNextTask();">
+        <h5 class="text-white">Next<br />Task</h5>
+      </button>
+    </div>
+  </ion-footer-bar>
+</div>

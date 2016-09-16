@@ -1,0 +1,19 @@
+<!--<ion-view cache-view="false">-->
+  <!--<ion-nav-title>Tasks</ion-nav-title>-->
+  <!--<ion-content>-->
+    <h2 class="page-header">Incident: {{incident}}</h2>
+    <ion-list>
+      <ion-item ng-repeat="task in tasks" ng-if="task.TaskTitle !== null" class="item-icon-right item-text-wrap">
+        <a ui-sref="app.tabs.detail({ id: task.TaskId, tasks: tasks })" class="bold">
+          <span class="bold">{{ task.TaskTitle }}</span>
+          <span class="step size-96">
+            <i class="icon " ng-class="{'balanced ion-android-checkbox-outline':task.checked, 'text-default ion-android-checkbox-outline-blank':!task.checked}"></i>
+          </span>
+          <div>
+            <span class="bold">{{ task.TaskDescription }}</span>
+          </div>
+        </a>
+      </ion-item>
+    </ion-list>
+  <!--</ion-content>-->
+<!--</ion-view>-->

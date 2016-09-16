@@ -1,0 +1,32 @@
+<ion-view>
+  <ion-content style="background: #f7f7f7;">
+    <h1 class="center" ng-if="ctrl.incidents.length === 0">No Incidents to Display</h1>
+    <h1 class="center" ng-if="!ctrl.incidents">No Incidents to Display</h1>
+    <h1 class="center" ng-if="ctrl.incidents.length > 0">Open Incidents</h1>
+    <img src="img/usa_jet_logo.png" ng-if="ctrl.incidents.length === 0" />
+    <ion-list ng-if="ctrl.incidents.length !== 0">
+      <ion-item class="card incidentCard" ng-repeat="incident in ctrl.incidents | orderBy:'-IncidentId'">
+        <div class="row" style="margin-left: -5px;">
+          <!--<h3 class="text-white" style="width: 100%;">-->
+            <span ng-class="incident.cssClass" class="iconBox">
+              <i class="icon icon-left" ng-class="incident.cssIcon" style="vertical-align: middle;"></i>
+            </span>
+            <h3 class="">{{incident.CategoryName}}</h3>
+            <h6 class="pull-right">{{incident.IncidentDate | date: 'dd/MM/yyyy'}}
+              <br /><span>{{incident.IncidentDate | date: 'HH:mm:ss'}}</span>
+            </h6>
+          <!--</h3>-->
+        </div>
+        <button class="button button-full button-positive ion-checkmark-circled icon-left" ng-click="ctrl.acknowledge();" ng-if="incident.Note !== 'Acknowledged' && incident.Note !== 'Deferred'">
+          <span>Click to Acknowledge Notification</span>
+        </button>
+        <button class="button button-full button-energized ion-android-arrow-forward icon-left" ng-click="ctrl.defer();" ng-if="incident.Note !== 'Acknowledged' && incident.Note !== 'Deferred'">
+          <span class="white">Defer to Alternate</span>
+        </button>
+        <button class="button button-full button-positive ion-checkmark-circled icon-left" ng-click="ctrl.gotoState('app.tabs.tasks');">
+          <span>Go to Tasks</span>
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-view>
+  <ion-content>
+    <div class="cameraDiv">
+      <div class="row" ng-repeat="img in ctrl.images">
+        <div class="col col-25">
+          <!--<img ng-show="img.imgURI !== undefined" ng-src="{{img.imgURI}}" class="" width="100%"/>-->
+          <img ng-show="ctrl.images.length > 0" ng-src="{{img}}" class="" width="100%"/>
+        </div>
+      </div>
+      <!--<img ng-show="ctrl.images === undefined" ng-src="http://placehold.it/450x300" class="" />-->
+      <!--<img ng-show="ctrl.imgURI !== undefined" ng-src="{{ctrl.imgURI}}" class="row" />-->
+      <!--<img ng-show="ctrl.imgURI === undefined" ng-src="http://placehold.it/450x300" class="" />-->
+      <img ng-show="ctrl.images.length === 0" ng-src="http://placehold.it/450x300" class="" />
+      <!--<div class="row">-->
+        <!--<img ng-show="ctrl.images.length > 0" ng-src="{{img}}" class="col-20" ng-repeat="img in ctrl.images" />-->
+      <!--</div>-->
+      <div class="row">
+        <button class="btn btn-primary text-uppercase btn-circle camBtn" ng-click="ctrl.takePicture();">
+          <i class="ion ion-camera fa fa-5x"></i>
+        </button>
+        </div>
+      <ion-footer-bar>
+        <div class="row">
+          <div class="col">
+              <select ng-model="ctrl.currentIncidentId" ng-options="incident.IncidentDate for incident in ctrl.incidents" class="form-control">{{incident.IncidentDate}}</select>
+          </div>
+          <button class="button button-positive icon ion-ios-cloud-upload button-full col" ng-click="ctrl.uploadPictures();" style="margin-top: 6px;">Upload Picture(s)</button>
+        </div>
+      </ion-footer-bar>
+    </div>
+  </ion-content>
+</ion-view>

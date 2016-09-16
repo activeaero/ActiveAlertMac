@@ -1,0 +1,54 @@
+<ion-view>
+  <ion-content>
+    <div class="list card bg-blue-soft">
+      <div class="item item-avatar com-board-title">
+        <i class="ion-alert-circled com-board-icon" ></i>
+        <h2>Most Recent Incident(s) {{ctrl.socketDate}}</h2>
+        <p></p>
+      </div>
+      <div class="item item-body com-board-content">
+        <ul ng-repeat="item in ctrl.incidentList">
+          <li>
+            <span class="bold"> Incident: {{ $index + 1 }}</span>
+            <ul>
+              <li ng-repeat="category in item.incident" class="{{ctrl.incidentList[$parent.$index].incident[0].cssClass}}"
+                  style="padding-left: 10px;">
+                <i class="icon ion-arrow-down-b" Style="margin-left: {{ $index }}0px; margin-right: 5px;" ng-if="!$last"></i>
+                <i class="icon ion-arrow-right-b" Style="margin-left: {{ $index }}0px; margin-right: 10px;" ng-if="$last"></i>{{ category.categoryName }}
+              </li>
+              <li ng-if="ctrl.incidentList[$index].summary">
+                <div class="summary">
+                  <span class="bold">
+                    Incident Summary:
+                  </span>
+                  <p>{{ ctrl.incidentList[$index].summary }}</p>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div ng-class="$even ? 'list card message-even' : 'list card message-odd'" ng-repeat="msg in ctrl.eventLog">
+      <div class="message-contact">
+        <h2>{{msg.message.user}}</h2>
+        <p>{{msg.message.msgDate | date:'medium'}}</p>
+      </div>
+      <div class="message-content">
+        <comm-board-content img="msg.image" content="msg.message.content"></comm-board-content>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar style="margin-bottom: 15px;">
+    <div class="bar bar-header item-input-inset" style="padding-bottom: 10px;">
+      <label class="item-input-wrapper">
+        <i class="icon ion-android-mail placeholder-icon"></i>
+        <input type="text" placeholder="Message" ng-model="ctrl.chatMsg">
+      </label>
+      <button class="button button-submit button-small" ng-click="ctrl.pushMessage(ctrl.chatMsg); ctrl.chatMsg = ''">
+        Submit
+      </button>
+    </div>
+  </ion-footer-bar>
+</ion-view>

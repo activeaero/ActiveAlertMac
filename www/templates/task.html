@@ -1,0 +1,22 @@
+<ion-view cache-view="false">
+  <!--<ion-nav-title>Tasks</ion-nav-title>-->
+  <ion-content>
+    <h1 class="page-header">Tasks for {{ctrl.userData.role}}</h1>
+    <ion-list>
+      <ion-item ng-repeat="task in ctrl.taskList" ng-if="task.TaskTitle !== null" class="item-icon-right item-text-wrap">
+        <a ui-sref="app.tabs.detail({ id: task.TaskId })" class="bold">
+          <span class="bold">{{ task.TaskTitle }}</span>
+          <span class="step size-96">
+            <i class="icon " ng-class="{'balanced ion-android-checkbox-outline':task.checked, 'text-default ion-android-checkbox-outline-blank':!task.checked}"></i>
+          </span>
+          <div>
+            <span class="bold">{{ task.TaskDescription }}</span>
+          </div>
+        </a>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer-bar>
+    <h3 class="title">SELECT APPLICABLE TASK</h3>
+  </ion-footer-bar>
+</ion-view>

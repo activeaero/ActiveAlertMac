@@ -1,0 +1,13 @@
+<ion-view cache-view="false">
+  <ion-content>
+    <div class="tasks container">
+      <!--<ion-refresher on-refresh="ctrl.doRefresh()"></ion-refresher>-->
+      <h2 class="page-header">Tasks for {{ctrl.userData.RoleName}}</h2>
+      <uib-tabset active="active">
+        <uib-tab index="$index + 1" ng-repeat="tab in ctrl.incidents" heading="{{tab.IncidentDate | date : 'MM/dd/yyyy HH:mm:ss'}}" classes="">
+          <task-list tasks="tab.taskList" incident="ctrl.message"></task-list>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,55 @@
+<ion-view>
+  <ion-content>
+  <div class="contactsPage">
+    <h1 class="page-header center">Contacts</h1>
+    <!--<ion-header-bar class="bar-light bar-subheader">-->
+      <!--<input type="search" placeholder="Filter contacts..." ng-model="ctrl.search" ng-focus="ctrl.searchFocused = true"-->
+             <!--ng-blur="ctrl.searchFocused = false" ng-change="ctrl.scrollTop()" class="full-width">-->
+      <!--<button ng-if="ctrl.search.length" class="button button-icon ion-android-close input-button" ng-click="ctrl.clearSearch()"></button>-->
+    <!--</ion-header-bar>-->
+    <ion-list ng-repeat="item in ctrl.contactsToFilter() | filter:ctrl.filterContacts | orderBy: 'LastName'" can-swipe=true>
+      <!--<ion-item class="item-divider">-->
+        <!--{{item.OrganizationName || 'Unordered'}}-->
+      <!--</ion-item>-->
+      <ion-item ng-repeat="contact in ctrl.contacts | filter: {Company: item.Company}">
+        <div class="row">
+          <!--<div class="col-md-1 pull-left">-->
+            <!--<i class="fa fa-3x" ng-class="contact.icon"></i>-->
+          <!--</div>-->
+          <div class="col">
+            <h2 class="bold text-primary uppercase" ng-if="!contact.OrganizationName">{{contact.FirstName + ' ' + contact.LastName}}</h2>
+            <h2 class="bold text-primary uppercase" ng-if="contact.OrganizationName !== null">{{contact.OrganizationName}}</h2>
+            <h4>{{contact.title}}</h4>
+            <a href="tel:{{contact.Telephone}}" ng-if="contact.Telephone" class="">
+              <button class="btn btn-warning">
+                <i class="fa ion-ios-telephone fa-2x"></i>
+                <h3 class="text-white">Office</h3>
+                <span class="">{{contact.Telephone}}</span>
+              </button>
+            </a>
+            <a href="tel:{{contact.CellPhone}}" ng-if="contact.CellPhone" class="">
+              <button class="btn btn-success">
+                <i class="fa ion-android-phone-portrait fa-2x"></i>
+                <h3 class="text-white">Cell</h3>
+                <span class="">{{contact.CellPhone}}</span>
+              </button>
+            </a>
+            <a href="tel:{{contact.HomePhone}}" ng-if="contact.HomePhone" class="">
+              <button class="btn btn-warning">
+                <i class="fa ion-ios-telephone fa-2x"></i>
+                <h3 class="text-white">Home</h3>
+                <span class="">{{contact.HomePhone}}</span>
+              </button>
+            </a>
+            <ion-option-button class="button-balanced" ng-if="contact.CellPhone">
+              <a href="sms:{{contact.CellPhone}}" ng-click="ctrl.sendSms(contact.CellPhone);" class="text-white">
+                <i class="fa fa-comment-o fa-2x"></i> Send Text
+              </a>
+            </ion-option-button>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+</ion-view>

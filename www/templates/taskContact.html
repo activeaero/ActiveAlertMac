@@ -1,0 +1,15 @@
+<!--<h3>{{::Location}} Contact Information</h3>-->
+<div ng-repeat="btn in task.button" ng-class="(task.button.length === 1) ? 'col-md-3' : 'col-md-'+(12/task.button.length)">
+  <a ng-href="{{btn.link}}"  class="icon-left button-full button-round text-white text-center" ng-class="[btn.class, btn.icon]" ng-click="ctrl.dialNumber(btn.number);">
+    <h4 class="text-white">
+     {{btn.title}} - {{btn.number}}
+    </h4>
+  </a>
+<!--<button class="icon-left button-full button-round" ng-class="[btn.class, btn.icon]">-->
+    <!--<h4 class="text-white">-->
+      <!--<a ng-href="{{btn.link}}" class="text-white text-center" ng-click="ctrl.dialNumber(btn.number);">{{btn.title}} - &lt;!&ndash;<br/>&ndash;&gt;-->
+        <!--{{btn.number}}-->
+      <!--</a>-->
+    <!--</h4>-->
+  <!--</button>-->
+</div>
